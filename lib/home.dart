@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:music_player/constants.dart';
+import 'package:music_player/container.dart';
 import 'package:music_player/playerpage.dart';
 
 class HomePage extends StatefulWidget {
@@ -66,89 +67,22 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: [
                   const SizedBox(width: 20), // left padding
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Player()),
-                      );
-                    },
-
-                    child: Container(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 40),
-                          Text('Get Chill', style: kcontainertext),
-                          Expanded(
-                            child: ClipRRect(
-                              child: Image.asset('01.png', fit: BoxFit.cover),
-                            ),
-                          ),
-                        ],
-                      ),
-                      height: 300,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF7166F0),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
+                  containerwidget(
+                    color: Color(0xFF7166F0),
+                    text: 'Get Chill',
+                    img: '01.png',
                   ),
                   const SizedBox(width: 20),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Player()),
-                      );
-                    },
-                    child: Container(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 40),
-                          Text('Lets Dance', style: kcontainertext),
-                          Expanded(
-                            child: ClipRRect(
-                              child: Image.asset('02.png', fit: BoxFit.cover),
-                            ),
-                          ),
-                        ],
-                      ),
-                      height: 300,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF21C263),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
+                  containerwidget(
+                    img: "02.png",
+                    color: Color(0xFF21C263),
+                    text: 'Lets Dance',
                   ),
                   const SizedBox(width: 20),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Player()),
-                      );
-                    },
-                    child: Container(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 40),
-                          Text('Be Cool', style: kcontainertext),
-                          Expanded(
-                            child: ClipRRect(
-                              child: Image.asset('03.png', fit: BoxFit.cover),
-                            ),
-                          ),
-                        ],
-                      ),
-                      height: 300,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFF9800),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
+                  containerwidget(
+                    img: '03.png',
+                    color: Color(0xFFFF9800),
+                    text: 'Be Cool',
                   ),
                   const SizedBox(width: 20), // right padding
                 ],
@@ -170,94 +104,25 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Container(
-                      width: 150,
-
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: Image.asset(
-                              '4.jpg',
-                              height: 150,
-                              width: 150,
-                            ),
-                          ),
-                          SizedBox(height: 7),
-
-                          Text('MALAYALI DA', style: kalbumlarge),
-                          SizedBox(height: 7),
-                          Text('Thiruma Li', style: kalbumsmall),
-                        ],
-                      ),
+                    smallbox(
+                      img: '4.jpg',
+                      subtitle: 'Thiruma Li',
+                      title: 'MALAYALI DA',
                     ),
                     SizedBox(width: 20),
-                    Container(
-                      width: 150,
-
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: Image.asset(
-                              '1.jpg',
-                              height: 150,
-                              width: 150,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(height: 7),
-
-                          Text('AAYIRAM AURA ', style: kalbumlarge),
-                          SizedBox(height: 7),
-                          Text('FEJO', style: kalbumsmall),
-                        ],
-                      ),
+                    smallbox(
+                      title: 'AAYIRAM AURA ',
+                      subtitle: 'FEJO',
+                      img: '1.jpg',
                     ),
                     SizedBox(width: 20),
-                    Container(
-                      width: 150,
-
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: Image.asset(
-                              '7.jpg',
-                              height: 150,
-                              width: 150,
-                            ),
-                          ),
-                          SizedBox(height: 7),
-
-                          Text('PANIPAALI', style: kalbumlarge),
-                          SizedBox(height: 7),
-                          Text('N J', style: kalbumsmall),
-                        ],
-                      ),
-                    ),
+                    smallbox(title: 'PANIPAALI', subtitle: 'N J', img: '7.jpg'),
                     SizedBox(width: 20),
 
-                    Container(
-                      width: 150,
-
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: Image.asset(
-                              '5.jpg',
-                              height: 150,
-                              width: 150,
-                            ),
-                          ),
-                          SizedBox(height: 7),
-
-                          Text('UNSHAIKABLE', style: kalbumlarge),
-                          SizedBox(height: 7),
-                          Text('Thiruma Li', style: kalbumsmall),
-                        ],
-                      ),
+                    smallbox(
+                      title: 'UNSHAIKABLE',
+                      subtitle: 'Thiruma Li',
+                      img: '5.jpg',
                     ),
                   ],
                 ),
