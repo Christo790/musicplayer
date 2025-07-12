@@ -12,3 +12,4 @@ const k_smalltext = TextStyle(
 );
 const k_bigtext = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
 const grey = Color(0xFF5D5F70);
+const k_appbartitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
