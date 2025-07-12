@@ -17,71 +17,77 @@ class _PlayerState extends State<Player> {
   final player = AudioPlayer();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('NOW PLAYING', style: k_appbartext),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(30),
-              child: Container(
-                child: Image.asset("images/cover.jpg", fit: BoxFit.cover),
+    return WillPopScope(
+      onWillPop: () async {
+        await player.stop(); // Stop the music
+        return true; // Allow pop
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('NOW PLAYING', style: k_appbartext),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: ClipRRect(
+                borderRadius: BorderRadiusGeometry.circular(30),
+                child: Container(
+                  child: Image.asset("images/cover.jpg", fit: BoxFit.cover),
+                ),
               ),
             ),
-          ),
 
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-              children: [
-                Text('Marshmello', style: k_smalltext),
-                Text('Keep It Mello', style: k_bigtext),
-              ],
+                children: [
+                  Text('Marshmello', style: k_smalltext),
+                  Text('Keep It Mello', style: k_bigtext),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(children: [
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(children: [
                     
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(FontAwesomeIcons.rotateRight, color: grey),
-                    Icon(FontAwesomeIcons.backwardStep, color: grey),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (isplay == true) {
-                            isplay = false;
-                            play = FontAwesomeIcons.pause;
-                            player.play(AssetSource('music.mp3'));
-                          } else {
-                            isplay = true;
-                            play = FontAwesomeIcons.play;
-                            player.pause();
-                          }
-                        });
-                      },
-                      child: playpause(icon: play),
-                    ),
-                    Icon(FontAwesomeIcons.forwardStep, color: grey),
-                    Icon(FontAwesomeIcons.shuffle, color: grey),
-                  ],
-                ),
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(FontAwesomeIcons.rotateRight, color: grey),
+                      Icon(FontAwesomeIcons.backwardStep, color: grey),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (isplay == true) {
+                              isplay = false;
+                              play = FontAwesomeIcons.pause;
+                              player.play(AssetSource('music.mp3'));
+                            } else {
+                              isplay = true;
+                              play = FontAwesomeIcons.play;
+                              player.pause();
+                            }
+                          });
+                        },
+                        child: playpause(icon: play),
+                      ),
+                      Icon(FontAwesomeIcons.forwardStep, color: grey),
+                      Icon(FontAwesomeIcons.shuffle, color: grey),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
