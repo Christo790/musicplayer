@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest>
+
+
+</manifest>
     <application
         android:label="music_player"
         android:name="${applicationName}"

@@ -21,3 +21,9 @@ const kalbumsmall = TextStyle(
   fontSize: 10,
   fontWeight: FontWeight.bold,
 );
+const kplaylisttext = TextStyle(
+  fontSize: 25,
+
+  fontWeight: FontWeight.bold,
+  letterSpacing: 1,
+);
